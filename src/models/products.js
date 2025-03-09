@@ -23,7 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     value: DataTypes.FLOAT,
-    restaurant_id: DataTypes.INTEGER
+    restaurant_id: DataTypes.INTEGER,
+    canceled_at: {
+      type: DataTypes.DATE,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'Products',

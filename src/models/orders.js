@@ -27,7 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     total_price: DataTypes.FLOAT,
     total_service_price: DataTypes.FLOAT,
     restaurant_id: DataTypes.INTEGER,
-    buyer_id: DataTypes.INTEGER
+    buyer_id: DataTypes.INTEGER,
+    canceled_at: {
+      type: DataTypes.DATE,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'Orders',

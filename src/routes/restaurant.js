@@ -7,6 +7,7 @@ const routes = Router();
 
 routes.post("/public/restaurants", RestaurantsController.registerRestaurant);
 routes.get("/public/login", RestaurantsController.loginRestaurant);
+routes.get("/public/restaurants", RestaurantsController.listRestaurant);
 
 routes.get("/restaurants", authMiddleware, RestaurantsController.listRestaurant);
 routes.get("/restaurants/:id", authMiddleware, RestaurantsController.listRestaurantId);

@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     has_service_tax: DataTypes.BOOLEAN,
     canceled_at: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.DATE,
       defaultValue: null
       },
   }, {

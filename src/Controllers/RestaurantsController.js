@@ -61,11 +61,6 @@ class RestaurantsController {
     }
 
     async listRestaurant(req, res) {
-        const restaurantIdFromToken = req.restaurantId;
-
-        if (parseInt(id) !== restaurantIdFromToken) {
-            return res.status(403).json({ error: "Acesso negado!" });
-        }
         try {
             const restaurant = await Restaurants.findAll({
                 attributes: {exclude: ["password"]}
