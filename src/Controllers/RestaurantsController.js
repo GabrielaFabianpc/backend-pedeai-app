@@ -73,22 +73,16 @@ class RestaurantsController {
     }
 
     async listRestaurantId(req,res) {
-        const authHeader = req.headers.authorization;
         const {id} = req.params;
-
-        const token = authHeader.split(" ")[1];
-
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const restaurantIdFromToken = decoded.restaurantId;
-
-        if (parseInt(id) !== restaurantIdFromToken) {
-            return res.status(403).json({ error: "Acesso negado!" });
-        }
 
         try {
             const restaurantId = await Restaurants.findOne({where: {id}});
-            return res.status(200).json({restaurantId})
+
+            const { password: _, ...restaurantWithoutPassword } = restaurantId.toJSON();
+
+            return res.status(200).json(restaurantWithoutPassword)
         } catch (error) {
+            console.log("error", error)
             return res.status(500).send({message: "Restaurante não encontrado!"})
         }
     }
